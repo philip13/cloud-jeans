@@ -61,3 +61,6 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+gem "devise", "~> 4.9.4"
+gem 'dotenv-rails', '~> 2.1', '>= 2.1.1'

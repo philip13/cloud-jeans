@@ -23,6 +23,18 @@
   </head>
 
   <body>
+    <% if notice.present? %>
+      <div class="notice alert alert-success">
+        <%= notice %>
+      </div>
+    <% end %>
+
+    <% if alert.present? %>
+      <p class="alert alert-danger">
+        <%= alert %>
+      </p>
+    <% end %>
+      
     <%= yield %>
   </body>
 </html>

@@ -1,0 +1,10 @@
+### API Test for Home Index Endpoint
+GET http://localhost:3000/api/v1/home/index HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer 9d186ea4287201c8b087fc56d32ee9c1
+
+### Negative Test for Home Index Endpoint with Invalid Token
+GET http://localhost:3000/api/v1/home/index HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer wrong-token
+
