@@ -4,7 +4,7 @@ class Api::V1::AuthenticatedController < ActionController::Base
   attr_reader :current_user, :current_api_token
 
   def authenticate
-    authenticate_user_with_token || handle_bad_authentication 
+    authenticate_user_with_token || handle_bad_authentication
   end
 
   private
@@ -16,6 +16,6 @@ class Api::V1::AuthenticatedController < ActionController::Base
   end
 
   def handle_bad_authentication
-    render json: { message: 'Unauthorized' }, status: :unauthorized
+    render json: { message: "Unauthorized" }, status: :unauthorized
   end
 end

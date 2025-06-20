@@ -1,0 +1,15 @@
+<h1>Api Tokens</h1>
+
+<% @api_tokens.each do |api_token| %>
+  <div class="api-token">
+    <p><strong>Token:</strong > <%= api_token.token %></p>
+    <p><strong>Created At:</strong> <%= api_token.created_at %></p>
+    <p><strong>Active:</strong> <%= api_token.active %></p>
+  </div>
+<% end %>
+
+<p>
+  <%= form_with url: api_tokens_path, method: :post do |form| %>
+    <%= form.submit "Create New API Token" %>
+  <% end %>
+</p>
