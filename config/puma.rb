@@ -6,6 +6,7 @@
 # serves each request in a thread from an internal thread pool.
 #
 # You can control the number of workers using ENV["WEB_CONCURRENCY"]. You
+workers ENV.fetch("WEB_CONCURRENCY", 1)
 # should only set this value when you want to run 2 or more workers. The
 # default is already 1.
 #
@@ -13,6 +14,13 @@
 # application spends waiting for IO operations and on how much you wish to
 # prioritize throughput over latency.
 #
+# Use the `preload_app!` method when specifying a `workers` number.
+# This directive tells Puma to first boot the application and load code
+# before forking the application. This takes advantage of Copy On Write
+# process behavior so workers use less memory.
+#
+preload_app!
+
 # As a rule of thumb, increasing the number of threads will increase how much
 # traffic a given process can handle (throughput), but due to CRuby's
 # Global VM Lock (GVL) it has diminishing returns and will degrade the
