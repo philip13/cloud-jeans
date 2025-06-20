@@ -63,6 +63,6 @@ group :test do
 end
 
 gem "devise", "~> 4.9.4"
-gem "dotenv-rails", "~> 2.1", ">= 2.1.1"
+gem "dotenv-rails", "~> 3.1"
 
 gem "minitest", "~> 5.25"
