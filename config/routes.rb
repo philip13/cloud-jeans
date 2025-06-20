@@ -18,6 +18,8 @@ Rails.application.routes.draw do
     namespace :v1 do
       defaults format: :json do
         get "home/index", to: "home#index"
+        get "products/size", to: "products#size"
+        get "products/cut_prise", to: "products#cut_prise"
       end
     end
   end

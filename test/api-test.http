@@ -8,3 +8,13 @@ GET http://localhost:3000/api/v1/home/index HTTP/1.1
 Content-Type: application/json
 Authorization: Bearer wrong-token
 
+### Get all Products
+GET http://localhost:3000/api/v1/products/size HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer 9d186ea4287201c8b087fc56d32ee9c1
+
+### GET all clouthing_codes products
+GET http://localhost:3000/api/v1/products/cut_prise HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer 9d186ea4287201c8b087fc56d32ee9c1
+
