@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_06_19_014929) do
+ActiveRecord::Schema[8.0].define(version: 2025_07_03_030825) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -21,6 +21,28 @@ ActiveRecord::Schema[8.0].define(version: 2025_06_19_014929) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_api_tokens_on_user_id"
+  end
+
+  create_table "prices", force: :cascade do |t|
+    t.bigint "product_id", null: false
+    t.string "price_type"
+    t.decimal "value", precision: 10, scale: 2
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_prices_on_product_id"
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string "brand"
+    t.string "cut"
+    t.string "model"
+    t.integer "quantity"
+    t.integer "pieces_per_package"
+    t.string "quality"
+    t.string "packaging_type"
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -36,4 +58,5 @@ ActiveRecord::Schema[8.0].define(version: 2025_06_19_014929) do
   end
 
   add_foreign_key "api_tokens", "users"
+  add_foreign_key "prices", "products"
 end

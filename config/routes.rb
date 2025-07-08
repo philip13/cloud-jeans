@@ -22,6 +22,7 @@ Rails.application.routes.draw do
         get "home/index", to: "home#index"
         get "products/size", to: "products#size"
         get "products/cut_prise", to: "products#cut_prise"
+        get "products", to: "products#index"
       end
     end
   end

@@ -1,6 +1,18 @@
 require "csv"
 
 class Api::V1::ProductsController < Api::V1::AuthenticatedController
+
+  def index
+    # Fetch all products and their associated prices
+    products = Product.includes(:prices).all
+
+    # Convert products to JSON format
+    json_data = products.as_json(include: :prices)
+
+    # Render the JSON data with a 200 OK status
+    render json: json_data, status: :ok
+  end
+
   def cut_prise
     json_data = get_information_from_csv("precios_tallas.csv")
     render json: json_data, status: :ok

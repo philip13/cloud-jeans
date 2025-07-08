@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  brand: MyString
+  cut: MyString
+  model: MyString
+  quantity: 1
+  pieces_per_package: 1
+  quality: MyString
+  packaging_type: MyString
+  description: MyString
+
+two:
+  brand: MyString
+  cut: MyString
+  model: MyString
+  quantity: 1
+  pieces_per_package: 1
+  quality: MyString
+  packaging_type: MyString
+  description: MyString

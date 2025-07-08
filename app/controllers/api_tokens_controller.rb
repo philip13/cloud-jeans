@@ -6,7 +6,6 @@ class ApiTokensController < ApplicationController
   end
 
   def create
-    puts "Current user: #{current_user.inspect}"
     @api_token = current_user.api_tokens.create
     if @api_token.persisted?
       redirect_to api_tokens_path, notice: "API token created successfully."
