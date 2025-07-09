@@ -1,6 +1,5 @@
 class Api::V1::AuthenticatedController < ActionController::Base
   before_action :authenticate
-
   attr_reader :current_user, :current_api_token
 
   def authenticate

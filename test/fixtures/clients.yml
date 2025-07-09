@@ -1,0 +1,25 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  first_name: Cliente
+  last_name: Uno
+  email: uno@client.com
+  phone: 3414112233
+  address: MyString
+  city: MyString
+  state: Jalisco
+  country: Mexico
+  zip_code: 49086
+  price_type: MyString
+
+two:
+  first_name: Client
+  last_name: Two
+  email: two@client.com
+  phone: 3414223344
+  address: MyString
+  city: MyString
+  state: Jalisco
+  country: Country
+  zip_code: 49000
+  price_type: MyString

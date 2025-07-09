@@ -1,21 +1,91 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  brand: MyString
-  cut: MyString
-  model: MyString
-  quantity: 1
-  pieces_per_package: 1
-  quality: MyString
-  packaging_type: MyString
+  brand: "AMAX"
+  cut: "WIDE LEG"
+  model: "AX82-W"
+  quantity: 200
+  pieces_per_package: 24
+  quality: "PREMIUM"
   description: MyString
 
 two:
-  brand: MyString
-  cut: MyString
-  model: MyString
-  quantity: 1
-  pieces_per_package: 1
-  quality: MyString
-  packaging_type: MyString
-  description: MyString
+  brand: "AMAX"
+  cut: "BABY BOOT"
+  model: "AX2BB"
+  quantity: 200
+  pieces_per_package: 24
+  quality: "PREMIUM"
+  description: "Descripton"
+
+tree:
+  brand: "CLOUD"
+  cut: "BABY BOOT"
+  model: "CX1691"
+  quantity: 200
+  pieces_per_package: 24
+  quality: "PREMIUM"
+  description: "Descripton"
+
+four:
+  brand: "CLOUD"
+  cut: "FLARE"
+  model: "CX1995-F"
+  quantity: 200
+  pieces_per_package: 24
+  quality: "PREMIUM"
+  description: "Descripton"
+
+five:
+  brand: "CLOUD"
+  cut: "SKINNY"
+  model: "CLE3194"
+  quantity: 200
+  pieces_per_package: 24
+  quality: "PREMIUM"
+  description: "Descripton"
+
+six:
+  brand: "KOKO PREMIUM"
+  cut: "WIDE LEG"
+  model: "KO1005"
+  quantity: 200
+  pieces_per_package: 24
+  quality: "PREMIUM"
+  description: "Descripton"
+
+seven:
+  brand: "KOKO PREMIUM"
+  cut: "TALLAS ESPECIALES"
+  model: "KOE3142BB"
+  quantity: 200
+  pieces_per_package: 24
+  quality: "PREMIUM"
+  description: "Descripton"
+
+eight:
+  brand: "KOKO PREMIUM"
+  cut: "STRAIGHT LEG"
+  model: "KO103"
+  quantity: 200
+  pieces_per_package: 24
+  quality: "PREMIUM"
+  description: "Descripton"
+
+nine:
+ brand: "KOKO MEN"
+ cut: "SLIM"
+ model: "K2405"
+ quantity: 200
+ pieces_per_package: 24
+ quality: "PREMIUM"
+ description: "Descripton"
+
+ten:
+  brand: "CLOUD MEN"
+  cut: "SLIM"
+  model: "M128"
+  quantity: 200
+  pieces_per_package: 24
+  quality: "PREMIUM"
+  description: "Descripton"

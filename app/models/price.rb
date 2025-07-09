@@ -3,5 +3,5 @@ class Price < ApplicationRecord
 
   validates :price_type, :value, presence: true
 
-  validates :value, numericality: { greater_than_or_equal_to: 1}
+  validates :value, numericality: { greater_than_or_equal_to: 1 }
 end
