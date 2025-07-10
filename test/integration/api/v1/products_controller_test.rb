@@ -4,7 +4,7 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @user = users(:one)
     @token = @user.api_tokens.create!
-    @product = products(:one)
+    @product = products(:product_one)
   end
 
   test "whent auth token is not valid" do
@@ -22,8 +22,8 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "get products filtered by brand" do
-    @product9 = products(:nine)
-    @product10 = products(:ten)
+    @product9 = products(:product_nine)
+    @product10 = products(:product_ten)
 
     get api_v1_products_path, headers: { HTTP_AUTHORIZATION: "Token token=#{@token.token}" }, params: { brand: "#{@product9.brand},#{@product10.brand}" }
     json_response = JSON.parse(response.body)
@@ -33,7 +33,7 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "get products filtered by brands" do
-    @product = products(:ten) # CLOUD MEN
+    @product = products(:product_ten) # CLOUD MEN
     get api_v1_products_path, headers: { HTTP_AUTHORIZATION: "Token token=#{@token.token}" }, params: { brand: @product.brand }
     json_response = JSON.parse(response.body)
     assert_equal json_response.size, 1
@@ -41,7 +41,7 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "get products filtered by cut" do
-    @product = products(:four) # FLARE
+    @product = products(:product_four) # FLARE
     get api_v1_products_path, headers: { HTTP_AUTHORIZATION: "Token token=#{@token.token}" }, params: { cut: @product.cut }
 
     json_response = JSON.parse(response.body)
@@ -50,9 +50,9 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "get products filtered by models" do
-    @product = products(:one) # AX82-W
-    @product2 = products(:two)
-    @product10 = products(:ten) # M128
+    @product = products(:product_one) # AX82-W
+    @product2 = products(:product_two)
+    @product10 = products(:product_ten) # M128
 
     get api_v1_products_path, headers: { HTTP_AUTHORIZATION:
     "Token token=#{@token.token}" }, params: { model: "#{@product.model},#{@product10.model}" }

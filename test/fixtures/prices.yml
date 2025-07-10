@@ -1,11 +1,10 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+<% price_types = ["PRECIO 1", "PRECIO 2", "PRECIO 3", "PRECIO 4"] %>
 
-one:
-  product: one
-  price_type: MyString
-  value: 9.99
-
-two:
-  product: two
-  price_type: MyString
-  value: 9.99
+<% %w[product_one product_two product_three product_four product_five product_six product_seven product_eight product_nine product_ten].each do |product| %>
+  <% %w[one two three four].each_with_index do |price, index| %>
+    <%= product %>_<%= price %>:
+      product: <%= product %>
+      price_type: <%= price_types[index] %>
+      value: <%= (245 - (index * 10)).to_i %>
+  <% end %>
+<% end %>
