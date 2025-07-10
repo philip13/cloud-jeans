@@ -21,6 +21,8 @@ Rails.application.routes.draw do
       defaults format: :json do
         get "home/index", to: "home#index"
         get "products", to: "products#index"
+        get "products/cut_prise", to: "products#cut_prise"
+        get "products/size", to: "products#size"
       end
     end
   end
