@@ -1,8 +1,6 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
 one:
-  first_name: Cliente
-  last_name: Uno
+  first_name: ONE
+  last_name: UNO
   email: uno@client.com
   phone: 3414112233
   address: MyString
@@ -10,16 +8,40 @@ one:
   state: Jalisco
   country: Mexico
   zip_code: 49086
-  price_type: MyString
+  price_type: PRECIO 1
 
 two:
-  first_name: Client
-  last_name: Two
-  email: two@client.com
+  first_name: TWO
+  last_name: DOS
+  email: dos@client.com
   phone: 3414223344
   address: MyString
   city: MyString
   state: Jalisco
   country: Country
   zip_code: 49000
-  price_type: MyString
+  price_type: PRECIO 2
+
+three:
+  first_name: THREE
+  last_name: TRES
+  email: tres@client.com
+  phone: 3414334455
+  address: MyString
+  city: MyString
+  state: Jalisco
+  country: Mexico
+  zip_code: 49001
+  price_type: PRECIO 3
+
+four:
+  first_name: FOUR
+  last_name: CUATRO
+  email: cuatro@client.com
+  phone: 3414445566
+  address: MyString
+  city: MyString
+  state: Jalisco
+  country: Mexico
+  zip_code: 49002
+  price_type: PRECIO 4

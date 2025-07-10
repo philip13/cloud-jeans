@@ -5,7 +5,7 @@ class Product < ApplicationRecord
 
   validates :brand, :cut, :model, :quantity, :pieces_per_package, :quality, presence: true
 
-  def self.product_price_type(price_type)
+  def self.include_price_type(price_type)
     Product.joins(:prices).where(prices: { price_type: price_type }).includes(:prices)
   end
 

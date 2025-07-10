@@ -1,9 +1,13 @@
 require "csv"
 
 class Api::V1::ProductsController < Api::V1::AuthenticatedController
+  before_action :setup_client, only: [ :index ]
+
   def index
     begin
       unless product_params.blank?
+        price_type = @client.nil? ? "PRECIO 1" : @client.price_type
+
         if product_params[:brand].present?
           brands = product_params[:brand].split(",").map(&:strip)
           products = Product.includes(:prices).where(brand: brands)
@@ -19,6 +23,7 @@ class Api::V1::ProductsController < Api::V1::AuthenticatedController
           products = Product.includes(:prices).where(model: models)
         end
 
+        products = products.include_price_type(price_type) if !products.nil? || !products.empty?
         json_data = products.as_json(include: :prices)
       else
         products = Product.includes(:prices).all
@@ -42,7 +47,11 @@ class Api::V1::ProductsController < Api::V1::AuthenticatedController
 
   private
   def product_params
-    params.permit(:brand, :cut, :model)
+    params.permit(:brand, :cut, :model, :phone)
+  end
+
+  def setup_client
+    @client = Client.find_by(phone: product_params[:phone])
   end
 
   def get_information_from_csv(file_name)
