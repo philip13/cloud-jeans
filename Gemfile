@@ -66,3 +66,5 @@ gem "devise", "~> 4.9.4"
 gem "dotenv-rails", "~> 3.1"
 
 gem "minitest", "~> 5.25"
+
+gem "csv", "~> 3.3"

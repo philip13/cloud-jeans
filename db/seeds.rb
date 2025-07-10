@@ -9,8 +9,7 @@ require 'csv'
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
-
-
+Product.destroy_all
 
 csv_path = Rails.root.join("app", "assets", "csv", "produc_brand_models.csv")
 csv_content = CSV.read(csv_path, headers: true)
