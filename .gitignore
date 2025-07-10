@@ -35,3 +35,6 @@
 
 # ignore all .DS_Store
 .DS_Store
+
+# ignore files to resonse api to Response VS
+test/.http/*
