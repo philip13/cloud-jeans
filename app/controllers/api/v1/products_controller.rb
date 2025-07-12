@@ -23,10 +23,10 @@ class Api::V1::ProductsController < Api::V1::AuthenticatedController
           products = Product.includes(:prices).where(model: models)
         end
 
-        products = products.nil? ? 
+        products = products.nil? ?
           Product.include_price_type(price_type) :
           products.include_price_type(price_type)
-        
+
         json_data = products.as_json(include: :prices)
       else
         products = Product.include_price_type("PRECIO 1")
