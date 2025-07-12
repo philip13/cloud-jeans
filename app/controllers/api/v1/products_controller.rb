@@ -26,7 +26,7 @@ class Api::V1::ProductsController < Api::V1::AuthenticatedController
         products = products.include_price_type(price_type) if !products.nil? || !products.empty?
         json_data = products.as_json(include: :prices)
       else
-        products = Product.includes(:prices).all
+        products = Product.include_price_type("PRECIO 1")
         json_data = products.as_json(include: :prices)
       end
       render json: json_data, status: :ok

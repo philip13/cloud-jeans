@@ -18,7 +18,7 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
     json_response = JSON.parse(response.body)
 
-    assert json_response.include?(@product.as_json(include: :prices))
+    assert json_response.first.dig("prices", 0, "price_type") == "PRECIO 1"
     assert_equal json_response.size, 10
   end
 
