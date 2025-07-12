@@ -5,28 +5,31 @@ class Api::V1::ProductsController < Api::V1::AuthenticatedController
 
   def index
     begin
-      unless product_params.blank?
+      if params[:brand].present? || params[:cut].present? || params[:model].present? || params[:phone].present?
         price_type = @client.nil? ? "PRECIO 1" : @client.price_type
 
-        if product_params[:brand].present?
-          brands = product_params[:brand].split(",").map(&:strip)
+        if params[:brand].present?
+          brands = params[:brand].split(",").map(&:strip)
           products = Product.includes(:prices).where(brand: brands)
         end
 
-        if product_params[:cut].present?
-          cuts = product_params[:cut].split(",").map(&:strip)
+        if params[:cut].present?
+          cuts = params[:cut].split(",").map(&:strip)
           products = Product.includes(:prices).where(cut: cuts)
         end
 
-        if product_params[:model].present?
-          models = product_params[:model].split(",").map(&:strip)
+        if params[:model].present?
+          models = params[:model].split(",").map(&:strip)
           products = Product.includes(:prices).where(model: models)
         end
 
-        products = products.include_price_type(price_type) if !products.nil? || !products.empty?
+        products = products.nil? ?
+          Product.include_price_type(price_type) :
+          products.include_price_type(price_type)
+
         json_data = products.as_json(include: :prices)
       else
-        products = Product.includes(:prices).all
+        products = Product.include_price_type("PRECIO 1")
         json_data = products.as_json(include: :prices)
       end
       render json: json_data, status: :ok
@@ -46,12 +49,8 @@ class Api::V1::ProductsController < Api::V1::AuthenticatedController
   end
 
   private
-  def product_params
-    params.permit(:brand, :cut, :model, :phone)
-  end
-
   def setup_client
-    @client = Client.find_by(phone: product_params[:phone])
+    @client = Client.find_by(phone: params[:phone])
   end
 
   def get_information_from_csv(file_name)
