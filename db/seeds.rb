@@ -16,6 +16,8 @@ csv_content = CSV.read(csv_path, headers: true)
 csv_content.each do |row|
   row = row.to_hash
   pieces_per_package = row['Corte'].upcase == "COLOMBIANO" ? 12 : 24
+  packaging_type = pieces_per_package == 24 ? "CAJA" : "PAQUETE"
+
   product = Product.new(
     brand: row["Marca"].upcase,
     cut: row["Corte"].upcase,
@@ -23,7 +25,9 @@ csv_content.each do |row|
     quantity: 200,
     quality: "PREMIUM",
     description: "Descripton",
-    pieces_per_package: pieces_per_package
+    pieces_per_package: pieces_per_package,
+    packaging_type: packaging_type,
+    id_image: row["IdImage"]
   )
 
   precio1 = Price.new(price_type: "PRECIO 1", description: "1-5 unidades", value: 245)

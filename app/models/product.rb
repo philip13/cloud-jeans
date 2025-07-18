@@ -8,8 +8,4 @@ class Product < ApplicationRecord
   def self.include_price_type(price_type)
     self.joins(:prices).where(prices: { price_type: price_type }).includes(:prices)
   end
-
-  def packaging_type
-    self.pieces_per_package == 24 ? "Caja": "Paquete"
-  end
 end
