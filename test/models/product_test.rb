@@ -34,6 +34,12 @@ class ProductTest < ActiveSupport::TestCase
     refute @product.valid?
   end
 
+  test "valid with packaging_type" do
+    @product = products(:product_one)
+    @product.packaging_type = "CAJA"
+    assert @product.valid?
+  end
+
   test "product could have id_image" do
     @product.id_image = "1uIy8qMgKmNCyhobc5SRVmNpLC2UF0E3M"
     assert @product.valid?
