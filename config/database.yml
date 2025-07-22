@@ -18,6 +18,7 @@ default: &default
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  prepared_statements: false
 
 
 development:
@@ -85,6 +86,8 @@ production:
     url: <%= ENV['DATABASE_URL'] %>
     username: cloud_jeans
     password: <%= ENV["CLOUD_JEANS_DATABASE_PASSWORD"] %>
+    port: 5432
+
   cache:
     <<: *primary_production
     database: cloud_jeans_production_cache
