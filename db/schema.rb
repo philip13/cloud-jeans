@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_07_18_033414) do
+ActiveRecord::Schema[8.0].define(version: 2025_07_22_032454) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -36,6 +36,14 @@ ActiveRecord::Schema[8.0].define(version: 2025_07_18_033414) do
     t.string "price_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "n8n_chat_histories", force: :cascade do |t|
+    t.string "session_id", limit: 255, null: false
+    t.jsonb "message", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["session_id"], name: "index_n8n_chat_histories_on_session_id"
   end
 
   create_table "prices", force: :cascade do |t|
