@@ -1,4 +1,5 @@
 require 'csv'
+require 'json'
 # This file should ensure the existence of records required to run the application in every environment (production,
 # development, test). The code here should be idempotent so that it can be executed at any point in every environment.
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
@@ -39,3 +40,20 @@ csv_content.each do |row|
   product.save
   puts "Product save? #{product.prices}"
 end
+
+# N8nChatHistory.destroy_all
+
+# chat_history_path = Rails.root.join("app", "assets", "csv", "data_n8n_chat_histories.csv")
+# chat_content = CSV.read(chat_history_path, headers: true)
+
+# chat_content.each do |row|
+#   session_id = row["session_id"]
+#   message = row["message"]
+#   created = row["created_at"]
+#   chat = N8nChatHistory.create(
+#     session_id: session_id,
+#     message: JSON.parse(message),
+#     created_at: created
+#   )
+#   puts "Chat => #{chat.inspect}"
+# end

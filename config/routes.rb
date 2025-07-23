@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "home#index"
   get "home/index"
+  get "chats/", to: "chat#index"
+
   devise_for :users
 
   resources :api_tokens

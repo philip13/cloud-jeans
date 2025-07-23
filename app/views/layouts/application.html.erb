@@ -18,16 +18,13 @@
     <link rel="apple-touch-icon" href="/icon.png">
 
     <%# Includes all stylesheet files in app/assets/stylesheets %>
-    <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
+  <body class="bg-gray-500 font-roboto">
     <% if user_signed_in? %>
-      <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
-    <% else %>
-      <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
-      <%= link_to "Sign in", new_user_session_path, :class => 'navbar-link'  %>
+      <%= render partial: "shared/navbar" %>
     <% end %>
 
     <% if notice.present? %>
@@ -41,7 +38,10 @@
         <%= alert %>
       </p>
     <% end %>
-      
-    <%= yield %>
+    <main class="container-fluid px-1">
+      <div class="mt-5 shadow-sm">
+        <%= yield %>
+      </div>
+    </main>
   </body>
 </html>
