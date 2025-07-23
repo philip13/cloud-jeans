@@ -68,3 +68,7 @@ gem "dotenv-rails", "~> 3.1"
 gem "minitest", "~> 5.25"
 
 gem "csv", "~> 3.3"
+
+# Install Bootstrap and dependencies
+gem "dartsass-rails"
+gem "bootstrap", "~> 5.3.3"
