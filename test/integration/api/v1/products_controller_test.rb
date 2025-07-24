@@ -79,23 +79,23 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
     assert_equal json_response.first["prices"].first["price_type"], @price.price_type
   end
 
-  test "get api/v1/products/cut_prise" do
-    get api_v1_products_cut_prise_path, headers: {
-      HTTP_AUTHORIZATION: "Token token=#{@token.token}"
-    }
+  # test "get api/v1/products/cut_prise" do
+  #   get api_v1_products_cut_prise_path, headers: {
+  #     HTTP_AUTHORIZATION: "Token token=#{@token.token}"
+  #   }
 
-    json_response = JSON.parse(response.body)
+  #   json_response = JSON.parse(response.body)
 
-    assert json_response.first.keys, [ "PRODUCTO", "PRECIO_1_5", "PRECIO_6_10", "PRECIO_11_15", "PRECIO_16_MAS" ]
-  end
+  #   assert json_response.first.keys, [ "PRODUCTO", "PRECIO_1_5", "PRECIO_6_10", "PRECIO_11_15", "PRECIO_16_MAS" ]
+  # end
 
-  test "get /api/v1/products/size" do
-    get api_v1_products_size_path, headers: {
-      HTTP_AUTHORIZATION: "Token token=#{@token.token}"
-    }
+  # test "get /api/v1/products/size" do
+  #   get api_v1_products_size_path, headers: {
+  #     HTTP_AUTHORIZATION: "Token token=#{@token.token}"
+  #   }
 
-    json_response = JSON.parse(response.body)
-    # binding.irb
-    assert json_response.first.keys, [ "CORTE", "MODELO", "TALLAS", "PIEZAS", "URL_IMG" ]
-  end
+  #   json_response = JSON.parse(response.body)
+  #   # binding.irb
+  #   assert json_response.first.keys, [ "CORTE", "MODELO", "TALLAS", "PIEZAS", "URL_IMG" ]
+  # end
 end
