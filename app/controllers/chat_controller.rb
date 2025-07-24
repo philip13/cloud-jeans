@@ -21,7 +21,7 @@ class ChatController < ApplicationController
   def check_updates
     @chat_session_id = params[:id]
     message_count = N8nChatHistory.where(session_id: @chat_session_id).count
-    
+
     render json: { message_count: message_count }
   end
 end
