@@ -16,8 +16,10 @@ csv_path = Rails.root.join("app", "assets", "csv", "produc_brand_models.csv")
 csv_content = CSV.read(csv_path, headers: true)
 csv_content.each do |row|
   row = row.to_hash
-  pieces_per_package = row['Corte'].upcase == "COLOMBIANO" ? 12 : 24
-  packaging_type = pieces_per_package == 24 ? "CAJA" : "PAQUETE"
+  # pieces_per_package = row['Corte'].upcase == "COLOMBIANO" ? 12 : 24
+  # packaging_type = pieces_per_package == 24 ? "CAJA" : "PAQUETE"
+  pieces_per_package = row['Tipo de Paquete'] == "CAJA" ? 24 : 12
+  packaging_type = row["Tipo de Paquete"]
 
   product = Product.new(
     brand: row["Marca"].upcase,
