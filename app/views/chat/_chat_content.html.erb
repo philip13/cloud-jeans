@@ -16,7 +16,7 @@
 </div>
 
 <!-- Mensajes del chat -->
-<div class="flex-grow-1 overflow-auto p-3 bg-light">
+<div class="flex-grow-1 overflow-auto p-3 bg-light" data-chat-session-id="<%= @chat_session_id %>">
   <% @conversation.each do |chat| %>
     <% if chat.message["type"] == "human" %>
       <!-- Mensaje recibido -->
