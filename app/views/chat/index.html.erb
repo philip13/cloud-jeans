@@ -3,7 +3,7 @@
     <!-- Sidebar -->
     <div class="col-md-4 col-lg-3 bg-white border-end d-md-block collapse" id="sidebar">
       <!-- Header del sidebar -->
-      <div class="d-flex align-items-center justify-content-between p-3 border-bottom bg-secondary">
+      <div class="d-flex align-items-center justify-content-between p-3 | text-primary-emphasis bg-primary-subtle border border-primary-subtle">
         <div class="d-flex align-items-center">
           <img src="https://placehold.co/40" alt="Mi perfil" class="rounded-circle me-3">
           <h6 class="mb-0">Historial</h6>
@@ -16,7 +16,7 @@
           <% @phones.each do |phone| %>
             <%= link_to chat_path(phone), 
                 data: { turbo_frame: "chat_content" },
-                class: "list-group-item list-group-item-action #{'bg-primary-subtle' if phone == @chat_session_id} border-0 p-3" do %>
+                class: "list-group-item list-group-item-action  border-0 p-3" do %>
               <div class="d-flex align-items-center">
                 <img src="https://placehold.co/50" alt="Contacto" class="rounded-circle me-3">
                 <div class="flex-grow-1">
