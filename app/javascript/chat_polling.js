@@ -1,5 +1,5 @@
 class ChatPolling {
-  constructor(sessionId, pollInterval = 5000) {
+  constructor(sessionId, pollInterval = 60000) {
     this.sessionId = sessionId;
     this.pollInterval = pollInterval;
     this.lastMessageCount = 0;

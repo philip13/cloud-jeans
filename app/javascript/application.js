@@ -6,4 +6,4 @@ import "controllers"
 // filepath: app/javascript/application.js
 import "@rails/ujs"
 import "./chat_polling"
-import "./chat_polling"
+
