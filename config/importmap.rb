@@ -9,3 +9,4 @@ pin "@rails/ujs", to: "rails-ujs.js"
 
 pin "bootstrap", to: "bootstrap.min.js", preload: true
 pin "@popperjs/core", to: "popper.js", preload: true
+pin "chat_polling", to: "chat_polling.js"

@@ -13,7 +13,11 @@ Rails.application.routes.draw do
   root "home#index"
   get "home/index"
   get "chats/", to: "chat#index"
-  resources :chat, only: [ :index, :show ]
+  resources :chat, only: [ :index, :show ] do
+    member do
+      get :check_updates
+    end
+  end
 
   devise_for :users
 
