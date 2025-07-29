@@ -11,12 +11,17 @@
         </div>
       </div>
       <!-- Lista de contactos/conversaciones -->
-      <div class="overflow-auto" style="height: calc(100vh - 140px);">
+      <div class="overflow-auto" style="height: calc(100vh - 140px);" data-controller="chat-list">
         <div class="list-group list-group-flush">
-          <% @phones.each do |phone| %>
+          <% @phones.each_with_index do |phone, index| %>
             <%= link_to chat_path(phone), 
-                data: { turbo_frame: "chat_content" },
-                class: "list-group-item list-group-item-action  border-0 p-3" do %>
+                data: { 
+                  turbo_frame: "chat_content",
+                  chat_list_target: "item",
+                  action: "click->chat-list#select"
+
+                },
+                class: "list-group-item list-group-item-#{ index == 0 ? 'success' : 'light'} | border-0 p-3" do %>
               <div class="d-flex align-items-center">
                 <img src="https://placehold.co/50" alt="Contacto" class="rounded-circle me-3">
                 <div class="flex-grow-1">

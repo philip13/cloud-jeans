@@ -20,7 +20,8 @@
 <div class="flex-grow-1 overflow-auto p-3 bg-light" 
      data-controller="chat" 
      data-chat-session-id-value="<%= @chat_session_id %>"
-     data-chat-poll-interval-value="30000">
+     data-chat-poll-interval-value="30000"
+     style="height: calc( 100vh - 140px)">
   <% @conversation.each do |chat| %>
     <% if chat.message["type"] == "human" %>
       <!-- Mensaje recibido -->
