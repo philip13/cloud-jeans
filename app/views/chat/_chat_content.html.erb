@@ -1,60 +1,72 @@
-<div id="chat_content">
-<!-- Header del chat -->
-<div class="d-flex align-items-center justify-content-between p-3 | text-primary-emphasis bg-primary-subtle border border-primary-subtle border-start-0 ">
-  <div class="d-flex align-items-center">
-    <button class="btn btn-outline-secondary btn-sm me-3 d-md-none" type="button" data-bs-toggle="collapse"
-      data-bs-target="#sidebar">
-      <i class="bi bi-list"></i>
-    </button>
-    <img src="https://placehold.co/40" alt="Contacto" class="rounded-circle me-3">
-    <div>
-      <h6 class="mb-0">
-        <%= @chat_session_id %>
-      </h6>
-      <!-- <small class="text-muted">En línea</small> -->
+<div id="chat_content"
+  data-controller="scroll">
+  <!-- Header del chat -->
+  <div class="d-flex align-items-center justify-content-between p-3 | text-primary-emphasis bg-primary-subtle border border-primary-subtle border-start-0 ">
+    <div class="d-flex align-items-center">
+      <button class="btn btn-outline-secondary btn-sm me-3 d-md-none" type="button" data-bs-toggle="collapse"
+        data-bs-target="#sidebar">
+        <i class="bi bi-list"></i>
+      </button>
+      <img src="https://placehold.co/40" alt="Contacto" class="rounded-circle me-3">
+      <div>
+        <h6 class="mb-0">
+          <%= @chat_session_id %>
+        </h6>
+        <!-- <small class="text-muted">En línea</small> -->
+      </div>
     </div>
   </div>
-</div>
 
-<!-- Mensajes del chat -->
-<div class="flex-grow-1 overflow-auto p-3 bg-light" 
-     data-controller="chat" 
-     data-chat-session-id-value="<%= @chat_session_id %>"
-     data-chat-poll-interval-value="30000">
-  <% @conversation.each do |chat| %>
-    <% if chat.message["type"] == "human" %>
-      <!-- Mensaje recibido -->
-      <div class="d-flex mb-3">
-        <div class="me-2">
-          <img src="https://placehold.co/30" alt="Usuario" class="rounded-circle">
-        </div>
-        <div class="bg-white p-3 rounded shadow-sm" style="max-width: 70%;">
-          <p class="mb-1">
-            <%= whatsapp_message_to_html(chat.message["content"]) %>
-          </p>
-          <small class="text-muted">
-            <%= chat.created_at.to_formatted_s(:long_ordinal) %>
-          </small>
-        </div>
-      </div>
-    <% else %>
-      <!-- Mensaje enviado -->
-      <div class="d-flex justify-content-end mb-3">
-        <div class="bg-secondary bg-gradient text-white p-3 rounded shadow-sm" style="max-width: 70%;">
-          <p class="mb-1">
-            <%= whatsapp_message_to_html(chat.message["content"]) %>
-          </p>
-          <div class="d-flex justify-content-end align-items-center">
-            <small class="me-2">
+  <!-- Mensajes del chat -->
+  <div class="flex-grow-1 overflow-auto p-3 bg-light"
+      data-scroll-target="content"
+      data-controller="chat" 
+      data-chat-session-id-value="<%= @chat_session_id %>"
+      data-chat-poll-interval-value="30000"
+      style="height: calc( 100vh - 140px)">
+    <% @conversation.each do |chat| %>
+      <% if chat.message["type"] == "human" %>
+        <!-- Mensaje recibido -->
+        <div class="d-flex mb-3">
+          <div class="me-2">
+            <img src="https://placehold.co/30" alt="Usuario" class="rounded-circle">
+          </div>
+          <div class="bg-white p-3 rounded shadow-sm" style="max-width: 70%;">
+            <p class="mb-1">
+              <%= whatsapp_message_to_html(chat.message["content"]) %>
+            </p>
+            <small class="text-muted">
               <%= chat.created_at.to_formatted_s(:long_ordinal) %>
             </small>
-            <%= svg("bi-check-all", width: "16", height: "16", fill: "#98FB98") %>
           </div>
         </div>
-      </div>
+      <% else %>
+        <!-- Mensaje enviado -->
+        <div class="d-flex justify-content-end mb-3">
+          <div class="bg-secondary bg-gradient text-white p-3 rounded shadow-sm" style="max-width: 70%;">
+            <p class="mb-1">
+              <%= whatsapp_message_to_html(chat.message["content"]) %>
+            </p>
+            <div class="d-flex justify-content-end align-items-center">
+              <small class="me-2">
+                <%= chat.created_at.to_formatted_s(:long_ordinal) %>
+              </small>
+              <%= svg("bi-check-all", width: "16", height: "16", fill: "#98FB98") %>
+            </div>
+          </div>
+        </div>
+      <% end %>
     <% end %>
-  <% end %>
-</div>
+    <div class="d-flex justify-content-center my-5">
+      <h6 class="text-muted text-center">Ultimo Mensaje</h6>
+    </div>
+  </div>
+  <div class="position-absolute bottom-0 end-0">
+    <button type="button" class="btn btn-success" 
+      data-action="scroll#scrollToBottom">
+      <%= svg("arrow-down-circle", width: "16", height: "16", fill: "#98FB98") %>
+    </button>
+  </div>
 </div>
 
 
