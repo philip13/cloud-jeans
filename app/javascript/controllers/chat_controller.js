@@ -2,6 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
   static values = { sessionId: String, pollInterval: { type: Number, default: 30000 } }
+  static targets = ["content"]
   
   async connect() {
     this.lastMessageCount = 0
@@ -106,5 +107,10 @@ export default class extends Controller {
     } catch (error) {
       console.error('Error refreshing chat:', error)
     }
+
+  }
+  
+  scrollToBottom() {
+    this.contentTarget.scrollToBottom = this.contentTarget.scrollHeight
   }
 }
