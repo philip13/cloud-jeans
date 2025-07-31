@@ -1,18 +1,21 @@
-<div class="container-fluid p-0" style="height: calc(100vh - 55px);">
+<div class="container-fluid px-0" style="height: calc(100vh - 55px);">
   <div class="row g-0 h-100">
     <!-- Sidebar -->
-    <div class="col-md-4 col-lg-3 bg-white border-end d-md-block collapse" id="sidebar">
+    <div class="col-md-3 col-lg-2 bg-white border-end d-md-block collapse" id="sidebarNumbers">
       <!-- Header del sidebar -->
       <div class="d-flex align-items-center justify-content-between p-3 | text-primary-emphasis bg-primary-subtle border border-primary-subtle">
         <div class="d-flex align-items-center">
-          <img src="https://placehold.co/40" alt="Mi perfil" class="rounded-circle me-3">
-          <h6 class="mb-0">Historial</h6>
+          <h6 class="h5 mb-0">Historial</h6>
           <br/>
         </div>
       </div>
       <!-- Lista de contactos/conversaciones -->
       <div class="overflow-auto" style="height: calc(100vh - 140px);" data-controller="chat-list">
         <div class="list-group list-group-flush">
+           <button class="btn btn-sm me-3 d-md-none" type="button" data-bs-toggle="collapse"
+        data-bs-target="#sidebarNumbers">
+            <%= svg('arrow-bar-up', width: '28', height: '28', fill: '#000' )%>
+          </button>
           <% @phones.each_with_index do |phone, index| %>
             <%= link_to chat_path(phone), 
                 data: { 
@@ -21,19 +24,13 @@
                   action: "click->chat-list#select"
 
                 },
-                class: "list-group-item list-group-item-#{ index == 0 ? 'success' : 'light'} | border-0 p-3" do %>
+                class: "list-group-item list-group-item-#{ index == 0 ? 'success' : 'light'} | border-0 px-3 py-2" do %>
               <div class="d-flex align-items-center">
-                <img src="https://placehold.co/50" alt="Contacto" class="rounded-circle me-3">
                 <div class="flex-grow-1">
                   <div class="d-flex justify-content-between align-items-start">
-                    <h6 class="mb-1"><%= phone %></h6>
-                    <!-- <small class="text-muted">10:30</small> -->
+                    <h6 class="mb-1 phone-number"><%= phone %></h6>
                   </div>
-                  <!-- <p class="mb-0 text-muted small">
-                    Hola, ¿cómo estás?
-                  </p> -->
                 </div>
-                <!-- <span class="badge bg-success rounded-pill">2</span> -->
               </div>
             <% end %>
           <% end %>
@@ -42,7 +39,7 @@
     </div>
 
     <!-- Área principal del chat -->
-    <div class="col-md-8 col-lg-9 d-flex flex-column h-100">
+    <div class="col-md-9 col-lg-10 d-flex flex-column h-100">
       <%= turbo_frame_tag "chat_content", class: "d-flex flex-column h-100" do %>
         <%= render "chat_content" %>
       <% end %>

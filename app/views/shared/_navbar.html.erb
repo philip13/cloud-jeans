@@ -1,18 +1,27 @@
-<nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark" aria-label="Main navigation">
-  <div class="container-fluid"> <a class="navbar-brand" href="/">Cloud Jeans AI</a> <button
-      class="navbar-toggler p-0 border-0" type="button" id="navbarSideCollapse" aria-label="Toggle navigation"> <span
-        class="navbar-toggler-icon"></span> </button>
-    <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+<nav class="navbar navbar-expand-sm bg-primary" aria-label="Third navbar example" data-bs-theme="dark">
+  <div class="container-fluid"> 
+    <a class="navbar-brand" href="/">Cloud Jeans AI</a> 
+    <button class="navbar-toggler"
+      type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample03" aria-controls="navbarsExample03"
+      aria-expanded="true" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
+    <div class="navbar-collapse collapse show" id="navbarsExample03" style="">
+      <ul class="navbar-nav me-auto mb-2 mb-sm-0">
         <li class="nav-item">
+          <!-- <a class="nav-link active" aria-current="page" href="#">Home</a> -->
           <%= link_to "Chats", chats_path, :class => "nav-link active" %>
         </li>
-        <li class="nav-item"> <a class="nav-link" href="#">Notifications</a> </li>
-        <li class="nav-item"> <a class="nav-link" href="#">Profile</a> </li>
+        <!-- <li class="nav-item"> <a class="nav-link" href="#">Link</a> </li>
+        <li class="nav-item"> <a class="nav-link disabled" aria-disabled="true">Disabled</a> </li>
+        <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"
+            aria-expanded="false">Dropdown</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </li> -->
       </ul>
-    </div>
-    <div class="flex">
-      <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => "link-light link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"  %>
+      <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => "btn btn-logout"  %>
     </div>
   </div>
 </nav>
