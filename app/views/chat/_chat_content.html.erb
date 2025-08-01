@@ -26,7 +26,7 @@
       <% if chat.message["type"] == "human" %>
         <!-- Mensaje recibido -->
         <div class="d-flex mb-3">
-          <div class="bg-white p-3 rounded shadow-sm" style="max-width: 70%;">
+          <div class="bg-white p-3 rounded shadow-sm | chat-message">
             <p class="mb-1">
               <%= whatsapp_message_to_html(chat.message["content"]) %>
             </p>
@@ -38,7 +38,7 @@
       <% else %>
         <!-- Mensaje enviado -->
         <div class="d-flex justify-content-end mb-3">
-          <div class="bg-primary bg-gradient text-white p-3 rounded shadow-sm" style="max-width: 70%;">
+          <div class="bg-primary bg-gradient text-white p-3 rounded shadow-sm | chat-message">
             <p class="mb-1">
               <%= whatsapp_message_to_html(chat.message["content"]) %>
             </p>
@@ -53,10 +53,43 @@
       <% end %>
     <% end %>
     <div class="d-flex justify-content-center mt-5">
-      <button class="btn btn-success">
-        <%= svg('check-lg', width: '18', height: '18', fill: '#FFF' ) %>
-        Marcar como Revisada
-      </button>
+      <div class="dropdown">
+        <a 
+          class="btn btn-success dropdown-toggle" 
+          href="#" role="button"
+          data-bs-toggle="dropdown"
+          aria-expanded="false">
+            <%= svg('check-lg', width: '18', height: '18', fill: '#FFF' ) %>
+            Marcar como:
+        </a>
+
+        <ul class="dropdown-menu">
+          <li>
+            <a class="dropdown-item" href="#">
+              <span class="badge bg-secondary fw-lighter">
+                <%= svg('check-lg', width: '12', height: '12', fill: '#FFF') %>
+              </span>
+              Revisada
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item" href="#">
+              <span class="badge bg-warning fw-lighter">
+                <%= svg('start-fill', width: '12', height: '12', fill: '#FFF') %>
+              </span>
+              Destacar
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item" href="#">
+              <span class="badge bg-light fw-lighter">
+                <%= svg('app', width: '12', height: '12') %>
+              </span>
+              No Revisada
+            </a>
+          </li>
+        </ul>
+      </div>    
     </div>
   </div>
   <div class="position-absolute bottom-0 end-0">

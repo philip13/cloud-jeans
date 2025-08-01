@@ -17,7 +17,7 @@
             <%= svg('arrow-bar-up', width: '28', height: '28', fill: '#000' )%>
           </button>
           <% @phones.each_with_index do |phone, index| %>
-            <%= link_to chat_path(phone), 
+            <%= link_to chat_path(phone.session_id), 
                 data: { 
                   turbo_frame: "chat_content",
                   chat_list_target: "item",
@@ -28,7 +28,7 @@
               <div class="d-flex align-items-center">
                 <div class="flex-grow-1">
                   <div class="d-flex justify-content-between align-items-start">
-                    <h6 class="mb-1 phone-number"><%= phone %></h6>
+                    <h6 class="mb-1 phone-number"><%= phone.session_id %></h6>
                   </div>
                 </div>
               </div>
