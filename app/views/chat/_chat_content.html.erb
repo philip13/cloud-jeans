@@ -1,18 +1,19 @@
 <div id="chat_content"
   data-controller="scroll">
   <!-- Header del chat -->
-  <div class="d-flex align-items-center justify-content-between p-3 | text-primary-emphasis border border-start-0 ">
+  <div class="d-flex align-items-center justify-content-between p-3 text-primary-emphasis border border-start-0">
     <div class="d-flex align-items-center">
       <button class="btn btn-sm me-3 d-md-none" type="button" data-bs-toggle="collapse"
         data-bs-target="#sidebarNumbers">
         <%= svg('arrow-bar-down', width: '16', height: '16', fill: '#000' )%>
       </button>
-      <div>
-        <h6 class="h5 phone-number mb-0">
-          <%= @chat_session_id %>
-        </h6>
-      </div>
+      <h6 class="h5 phone-number mb-0">
+        <%= @chat_session_id %>
+      </h6>
     </div>
+    <span>
+      Estado: <%= ConversationStatus.human_attribute_name("status.#{@conversation_status.status}") %>
+    </span>
   </div>
 
   <!-- Mensajes del chat -->
@@ -65,28 +66,28 @@
 
         <ul class="dropdown-menu">
           <li>
-            <a class="dropdown-item" href="#">
+            <%= link_to update_status_conversation_status_path(@conversation_status, status: 'read'), class: "dropdown-item", method: :patch do %>
               <span class="badge bg-secondary fw-lighter">
                 <%= svg('check-lg', width: '12', height: '12', fill: '#FFF') %>
               </span>
               Revisada
-            </a>
+            <% end %>
           </li>
           <li>
-            <a class="dropdown-item" href="#">
+            <%= link_to update_status_conversation_status_path(@conversation_status, status: 'highlighted'), class: "dropdown-item", method: :patch  do %>
               <span class="badge bg-warning fw-lighter">
                 <%= svg('start-fill', width: '12', height: '12', fill: '#FFF') %>
               </span>
               Destacar
-            </a>
+            <% end %>
           </li>
           <li>
-            <a class="dropdown-item" href="#">
+            <%= link_to update_status_conversation_status_path(@conversation_status, status: 'unread'), class: "dropdown-item", method: :patch  do %>
               <span class="badge bg-light fw-lighter">
                 <%= svg('app', width: '12', height: '12') %>
               </span>
               No Revisada
-            </a>
+            <% end %>
           </li>
         </ul>
       </div>    

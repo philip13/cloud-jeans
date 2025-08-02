@@ -26,18 +26,7 @@
     <% if user_signed_in? %>
       <%= render partial: "shared/navbar" %>
     <% end %>
-
-    <% if notice.present? %>
-      <div class="notice alert alert-success">
-        <%= notice %>
-      </div>
-    <% end %>
-
-    <% if alert.present? %>
-      <p class="alert alert-danger">
-        <%= alert %>
-      </p>
-    <% end %>
+    <%= render partial: "shared/flash_message" %>
     <main class="container-fluid px-0">
       <div class="shadow-sm">
         <%= yield %>

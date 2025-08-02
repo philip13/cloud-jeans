@@ -24,11 +24,16 @@
                   action: "click->chat-list#select"
 
                 },
-                class: "list-group-item list-group-item-#{ index == 0 ? 'success' : 'light'} | border-0 px-3 py-2" do %>
+                class: "list-group-item  #{conversation_state_color(phone, index)} | border-0 px-3 py-2" do %>
               <div class="d-flex align-items-center">
                 <div class="flex-grow-1">
                   <div class="d-flex justify-content-between align-items-start">
-                    <h6 class="mb-1 phone-number"><%= phone.session_id %></h6>
+                    <h6 class="mb-1 phone-number">
+                      <%= phone.session_id %>
+                    </h6>
+                    <span class="fs-6 fw-lighter">
+                      <%= phone.status %>
+                    </span>
                   </div>
                 </div>
               </div>

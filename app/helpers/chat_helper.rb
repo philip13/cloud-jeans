@@ -43,4 +43,14 @@ module ChatHelper
 
     html.html_safe
   end
+
+  def conversation_state_color(record, index)
+    css_class = "list-group-item-light"
+    css_class = "list-group-item-secondary" if record.read?
+    css_class = "list-group-item-light" if record.unread?
+    css_class = "list-group-item-warning" if record.highlighted?
+    css_class << " success" if index == 0
+
+    css_class
+  end
 end

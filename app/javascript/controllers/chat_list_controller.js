@@ -6,11 +6,10 @@ export default class extends Controller {
 
   select(event) {
     this.itemTargets.forEach(el => {
-      el.classList.remove("list-group-item-success")
-      el.classList.add("list-group-item-light")
+      el.classList.remove("success")
     })
+
     const clicked = event.currentTarget
-    clicked.classList.remove("list-group-item-light")
-    clicked.classList.add("list-group-item-success")
+    clicked.classList.add("success")
   }
 }
