@@ -13,17 +13,20 @@ Rails.application.routes.draw do
 
   root "chat#index"
   get "chats/", to: "chat#index"
+  devise_for :users
+  resources :api_tokens
 
-  get "home/index"
   resources :chat, only: [ :index, :show ] do
     member do
       get :check_updates
     end
   end
 
-  devise_for :users
-
-  resources :api_tokens
+  resources :conversation_statuses do
+    member do
+      patch :update_status
+    end
+  end
 
   namespace :api do
     namespace :v1 do
