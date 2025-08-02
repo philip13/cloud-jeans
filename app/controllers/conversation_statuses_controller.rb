@@ -1,5 +1,5 @@
 class ConversationStatusesController < ApplicationController
-  before_action :set_conversation_status, only: [:update_status]
+  before_action :set_conversation_status, only: [ :update_status ]
 
   def update_status
     if @conversation_status.update(status: params[:status])
